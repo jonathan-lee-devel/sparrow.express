@@ -1,6 +1,6 @@
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { SubredditValidator } from '@/lib/validators/subreddit'
+import { SubredditValidator } from '@/lib/validators/organization'
 import { z } from 'zod'
 
 export async function POST(req: Request) {
@@ -14,19 +14,19 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { name } = SubredditValidator.parse(body)
 
-    // check if subreddit already exists
-    const subredditExists = await db.subreddit.findFirst({
+    // check if organization already exists
+    const organizationExists = await db.organization.findFirst({
       where: {
         name,
       },
     })
 
-    if (subredditExists) {
+    if (organizationExists) {
       return new Response('Subreddit already exists', { status: 409 })
     }
 
-    // create subreddit and associate it with the user
-    const subreddit = await db.subreddit.create({
+    // create organization and associate it with the user
+    const organization = await db.organization.create({
       data: {
         name,
         creatorId: session.user.id,
@@ -37,16 +37,16 @@ export async function POST(req: Request) {
     await db.subscription.create({
       data: {
         userId: session.user.id,
-        subredditId: subreddit.id,
+        organizationId: organization.id,
       },
     })
 
-    return new Response(subreddit.name)
+    return new Response(organization.name)
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 422 })
     }
 
-    return new Response('Could not create subreddit', { status: 500 })
+    return new Response('Could not create organization', { status: 500 })
   }
 }

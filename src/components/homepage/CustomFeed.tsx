@@ -15,15 +15,15 @@ const CustomFeed = async () => {
       userId: session.user.id,
     },
     include: {
-      subreddit: true,
+      organization: true,
     },
   })
 
   const posts = await db.post.findMany({
     where: {
-      subreddit: {
+      organization: {
         name: {
-          in: followedCommunities.map((sub) => sub.subreddit.name),
+          in: followedCommunities.map((sub) => sub.organization.name),
         },
       },
     },
@@ -34,7 +34,7 @@ const CustomFeed = async () => {
       votes: true,
       author: true,
       comments: true,
-      subreddit: true,
+      organization: true,
     },
     take: INFINITE_SCROLL_PAGINATION_RESULTS,
   })

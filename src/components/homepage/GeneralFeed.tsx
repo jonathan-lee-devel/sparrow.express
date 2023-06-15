@@ -11,7 +11,7 @@ const GeneralFeed = async () => {
       votes: true,
       author: true,
       comments: true,
-      subreddit: true,
+      organization: true,
     },
     take: INFINITE_SCROLL_PAGINATION_RESULTS, // 4 to demonstrate infinite scroll, should be higher in production
   })

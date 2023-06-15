@@ -16,7 +16,7 @@ const page = async ({ params }: PageProps) => {
 
   const session = await getAuthSession()
 
-  const subreddit = await db.subreddit.findFirst({
+  const organization = await db.organization.findFirst({
     where: { name: slug },
     include: {
       posts: {
@@ -24,7 +24,7 @@ const page = async ({ params }: PageProps) => {
           author: true,
           votes: true,
           comments: true,
-          subreddit: true,
+          organization: true,
         },
         orderBy: {
           createdAt: 'desc'
@@ -34,15 +34,15 @@ const page = async ({ params }: PageProps) => {
     },
   })
 
-  if (!subreddit) return notFound()
+  if (!organization) return notFound()
 
   return (
     <>
       <h1 className='font-bold text-3xl md:text-4xl h-14'>
-        r/{subreddit.name}
+        org/{organization.name}
       </h1>
       <MiniCreatePost session={session} />
-      <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
+      <PostFeed initialPosts={organization.posts} organizationName={organization.name} />
     </>
   )
 }

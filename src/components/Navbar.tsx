@@ -3,7 +3,6 @@ import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { buttonVariants } from './ui/Button'
 import { UserAccountNav } from './UserAccountNav'
-import SearchBar from './SearchBar'
 import Image from "next/image";
 
 const Navbar = async () => {
@@ -14,7 +13,7 @@ const Navbar = async () => {
         {/* logo */}
         <Link href='/' className='flex gap-2 items-center'>
           <Image src={'/favicon.ico'} alt={'Sparrow'} width={30} height={30} />
-          <p className='hidden text-zinc-700 text-sm font-medium md:block'>Sparrow</p>
+          <p className='hidden text-amber-500 text-sm font-medium md:block'>Sparrow</p>
         </Link>
 
         {/* actions */}

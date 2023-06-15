@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { toast } from '@/hooks/use-toast'
 import { useCustomToasts } from '@/hooks/use-custom-toasts'
-import { CreateSubredditPayload } from '@/lib/validators/subreddit'
+import { CreateSubredditPayload } from '@/lib/validators/organization'
 import { useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
@@ -21,7 +21,7 @@ const Page = () => {
         name: input,
       }
 
-      const { data } = await axios.post('/api/subreddit', payload)
+      const { data } = await axios.post('/api/organization', payload)
       return data as string
     },
     onError: (err) => {
@@ -36,7 +36,7 @@ const Page = () => {
 
         if (err.response?.status === 422) {
           return toast({
-            title: 'Invalid subreddit name.',
+            title: 'Invalid organization name.',
             description: 'Please choose a name between 3 and 21 letters.',
             variant: 'destructive',
           })
@@ -49,12 +49,12 @@ const Page = () => {
 
       toast({
         title: 'There was an error.',
-        description: 'Could not create subreddit.',
+        description: 'Could not create organization.',
         variant: 'destructive',
       })
     },
     onSuccess: (data) => {
-      router.push(`/r/${data}`)
+      router.push(`/org/${data}`)
     },
   })
 
@@ -62,7 +62,7 @@ const Page = () => {
     <div className='container flex items-center h-full max-w-3xl mx-auto'>
       <div className='relative bg-white w-full h-fit p-4 rounded-lg space-y-6'>
         <div className='flex justify-between items-center'>
-          <h1 className='text-xl font-semibold'>Create a Community</h1>
+          <h1 className='text-xl font-semibold'>Create an Organization</h1>
         </div>
 
         <hr className='bg-red-500 h-px' />
@@ -70,11 +70,11 @@ const Page = () => {
         <div>
           <p className='text-lg font-medium'>Name</p>
           <p className='text-xs pb-2'>
-            Community names including capitalization cannot be changed.
+            Organization names including capitalization cannot be changed.
           </p>
           <div className='relative'>
-            <p className='absolute text-sm left-0 w-8 inset-y-0 grid place-items-center text-zinc-400'>
-              r/
+            <p className='absolute text-sm left-0 w-8 mr-2 pr-2 inset-y-0 grid place-items-center text-zinc-400'>
+              org/
             </p>
             <Input
               value={input}
@@ -95,7 +95,7 @@ const Page = () => {
             isLoading={isLoading}
             disabled={input.length === 0}
             onClick={() => createCommunity()}>
-            Create Community
+            Create Organization
           </Button>
         </div>
       </div>

@@ -19,10 +19,10 @@ import '@/styles/editor.css'
 type FormData = z.infer<typeof PostValidator>
 
 interface EditorProps {
-  subredditId: string
+  organizationId: string
 }
 
-export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
+export const Editor: React.FC<EditorProps> = ({ organizationId }) => {
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   } = useForm<FormData>({
     resolver: zodResolver(PostValidator),
     defaultValues: {
-      subredditId,
+      organizationId,
       title: '',
       content: null,
     },
@@ -45,10 +45,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     mutationFn: async ({
       title,
       content,
-      subredditId,
+      organizationId,
     }: PostCreationRequest) => {
-      const payload: PostCreationRequest = { title, content, subredditId }
-      const { data } = await axios.post('/api/subreddit/post/create', payload)
+      const payload: PostCreationRequest = { title, content, organizationId }
+      const { data } = await axios.post('/api/organization/post/create', payload)
       return data
     },
     onError: () => {
@@ -59,7 +59,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       })
     },
     onSuccess: () => {
-      // turn pathname /r/mycommunity/submit into /r/mycommunity
+      // turn pathname /org/mycommunity/submit into /org/mycommunity
       const newPathname = pathname.split('/').slice(0, -1).join('/')
       router.push(newPathname)
 
@@ -171,7 +171,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     const payload: PostCreationRequest = {
       title: data.title,
       content: blocks,
-      subredditId,
+      organizationId,
     }
 
     createPost(payload)
@@ -186,7 +186,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   return (
     <div className='w-full p-4 bg-zinc-50 rounded-lg border border-zinc-200'>
       <form
-        id='subreddit-post-form'
+        id='organization-post-form'
         className='w-fit'
         onSubmit={handleSubmit(onSubmit)}>
         <div className='prose prose-stone dark:prose-invert'>
