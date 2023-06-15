@@ -65,7 +65,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     return (
         <Command
             ref={commandRef}
-            className={'relative rounded-lg border bg-slate-300 max-w-100 z-50 overflow-visible'}>
+            className={'rounded-lg border bg-slate-300 max-w-100 z-50 overflow-visible'}>
             <CommandInput
                 isLoading={isFetching}
                 onValueChange={(text) => {

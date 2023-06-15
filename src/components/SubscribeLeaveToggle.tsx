@@ -92,14 +92,14 @@ const SubscribeLeaveToggle = ({
       className='w-full mt-1 mb-4'
       isLoading={isUnsubLoading}
       onClick={() => unsubscribe()}>
-      Leave community
+      Unsubscribe
     </Button>
   ) : (
     <Button
       className='w-full mt-1 mb-4'
       isLoading={isSubLoading}
       onClick={() => subscribe()}>
-      Join to post
+      Subscribe
     </Button>
   )
 }
