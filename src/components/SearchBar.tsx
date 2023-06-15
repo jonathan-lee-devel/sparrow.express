@@ -73,7 +73,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
         }}
         value={input}
         className='outline-none border-none focus:border-none focus:outline-none ring-0'
-        placeholder='Search communities...'
+        placeholder='Search services...'
       />
 
       {input.length > 0 && (
