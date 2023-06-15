@@ -31,8 +31,8 @@ const Post: FC<PostProps> = ({
   const pRef = useRef<HTMLParagraphElement>(null)
 
   return (
-    <div className='rounded-md bg-white shadow'>
-      <div className='px-6 py-4 flex justify-between'>
+    <div className='rounded-md bg-slate-400 shadow'>
+      <div className='px-10 py-4 flex justify-between'>
         <PostVoteClient
           postId={post.id}
           initialVotesAmt={_votesAmt}
@@ -40,7 +40,7 @@ const Post: FC<PostProps> = ({
         />
 
         <div className='w-0 flex-1'>
-          <div className='max-h-40 mt-1 text-xs text-gray-500'>
+          <div className='max-h-40 mt-1 text-xs text-black semibold'>
             {subredditName ? (
               <>
                 <a
@@ -72,7 +72,7 @@ const Post: FC<PostProps> = ({
         </div>
       </div>
 
-      <div className='bg-gray-50 z-20 text-sm px-4 py-4 sm:px-6'>
+      <div className='bg-slate-300 z-20 text-sm px-4 py-4 sm:px-6'>
         <Link
           href={`/r/${subredditName}/post/${post.id}`}
           className='w-fit flex items-center gap-2'>

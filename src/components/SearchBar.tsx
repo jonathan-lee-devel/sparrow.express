@@ -64,7 +64,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   return (
     <Command
       ref={commandRef}
-      className='relative rounded-lg border max-w-lg z-50 overflow-visible'>
+      className={'relative rounded-lg border bg-slate-300 max-w-100 z-50 overflow-visible'}>
       <CommandInput
         isLoading={isFetching}
         onValueChange={(text) => {
@@ -72,12 +72,12 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
           debounceRequest()
         }}
         value={input}
-        className='outline-none border-none focus:border-none focus:outline-none ring-0'
+        className={'outline-none border-none bg-slate-300 focus:border-none focus:outline-none ring-0'}
         placeholder='Search services...'
       />
 
       {input.length > 0 && (
-        <CommandList className='absolute bg-white top-full inset-x-0 shadow rounded-b-md'>
+        <CommandList className='absolute bg-slate-500 top-full inset-x-0 shadow rounded-b-md'>
           {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
           {(queryResults?.length ?? 0) > 0 ? (
             <CommandGroup heading='Communities'>
