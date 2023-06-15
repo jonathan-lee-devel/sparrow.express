@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Breadit',
+  title: 'Sparrow',
   description: 'A Reddit clone built with Next.js and TypeScript.',
 }
 
@@ -71,7 +71,7 @@ const Layout = async ({
           {/* info sidebar */}
           <div className='overflow-hidden h-fit rounded-lg border border-gray-200 order-first md:order-last'>
             <div className='px-6 py-4'>
-              <p className='font-semibold py-3'>About org/{organization.name}</p>
+              <p className='font-semibold text-amber-500 py-3'>About org/{organization.name}</p>
             </div>
             <dl className='divide-y divide-gray-100 px-6 py-4 text-sm leading-6 bg-white'>
               <div className='flex justify-between gap-x-4 py-3'>

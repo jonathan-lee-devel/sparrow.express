@@ -13,7 +13,7 @@ const ToFeedButton = () => {
   const organizationPath = getSubredditPath(pathname)
 
   return (
-    <a href={organizationPath} className={buttonVariants({ variant: 'ghost' })}>
+    <a href={organizationPath} className={buttonVariants({ variant: 'subtle' })}>
       <ChevronLeft className='h-4 w-4 mr-1' />
       {organizationPath === '/' ? 'Back home' : 'Back to community'}
     </a>
