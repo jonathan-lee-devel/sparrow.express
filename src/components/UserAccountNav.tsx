@@ -29,6 +29,7 @@ export function UserAccountNav({user}: UserAccountNavProps) {
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <UserAvatar
+                    id={'user-image-dropdown-button'}
                     user={{name: user.name || null, image: user.image || null}}
                     className='h-8 w-8'
                 />
@@ -73,7 +74,7 @@ export function UserAccountNav({user}: UserAccountNavProps) {
                     (
 
                         <DropdownMenuItem className={'cursor-pointer'}>
-                            <Link href={'/sign-in'}>Sign In</Link>
+                            <Link id={'user-image-dropdown-button-sign-in'} href={'/sign-in'}>Sign In</Link>
                         </DropdownMenuItem>
                     )
                 }
