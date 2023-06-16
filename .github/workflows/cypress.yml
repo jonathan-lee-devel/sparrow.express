@@ -19,6 +19,7 @@ jobs:
           build: npm run build
           start: npm run dev
           wait-on: http://localhost:3000
+          command: npm run cy:run
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

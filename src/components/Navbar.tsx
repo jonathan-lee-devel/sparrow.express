@@ -1,13 +1,9 @@
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
-import { buttonVariants } from './ui/Button'
 import {ANONYMOUS_USER, UserAccountNav} from './UserAccountNav'
 import SearchBar from './SearchBar'
-import Image from "next/image";
-import {Icons} from "@/components/Icons";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem} from "@/components/ui/DropdownMenu";
-import {User} from "lucide-react";
+import Image from 'next/image';
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions)
