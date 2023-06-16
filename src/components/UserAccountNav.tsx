@@ -12,6 +12,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu'
 import {UserAvatar} from '@/components/UserAvatar'
+import {useRouter} from "next/navigation";
 
 export const ANONYMOUS_USER = {
     name: 'Anonymous',
@@ -25,6 +26,8 @@ interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function UserAccountNav({user}: UserAccountNavProps) {
+    const router = useRouter()
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -46,17 +49,17 @@ export function UserAccountNav({user}: UserAccountNavProps) {
                     </div>
                 </div>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem asChild>
+                <DropdownMenuItem onClick={() => {router.push('/', {forceOptimisticNavigation: true})}} asChild>
                     <Link href='/'>Feed</Link>
                 </DropdownMenuItem>
 
                 {user !== ANONYMOUS_USER ? (
                         <>
-                            <DropdownMenuItem asChild>
+                            <DropdownMenuItem onClick={() => {router.push('/org/create', {forceOptimisticNavigation: true})}} asChild>
                                 <Link href='/org/create'>Create Organization</Link>
                             </DropdownMenuItem>
 
-                            <DropdownMenuItem asChild>
+                            <DropdownMenuItem onClick={() => {router.push('/settings', {forceOptimisticNavigation: true})}} asChild>
                                 <Link href='/settings'>Settings</Link>
                             </DropdownMenuItem>
                             <DropdownMenuSeparator/>
@@ -73,7 +76,7 @@ export function UserAccountNav({user}: UserAccountNavProps) {
                         </>) :
                     (
 
-                        <DropdownMenuItem className={'cursor-pointer'}>
+                        <DropdownMenuItem onClick={() => {router.push('/sign-in', {forceOptimisticNavigation: true})}} className={'cursor-pointer'}>
                             <Link id={'user-image-dropdown-button-sign-in'} href={'/sign-in'}>Sign In</Link>
                         </DropdownMenuItem>
                     )
