@@ -15,7 +15,7 @@ const Page = () => {
   const [input, setInput] = useState<string>('')
   const { loginToast } = useCustomToasts()
 
-  const { mutate: createCommunity, isLoading } = useMutation({
+  const { mutate: createOrganization, isLoading } = useMutation({
     mutationFn: async () => {
       const payload: CreateSubredditPayload = {
         name: input,
@@ -73,7 +73,7 @@ const Page = () => {
             Organization names including capitalization cannot be changed.
           </p>
           <div className='relative'>
-            <p className='absolute text-sm left-0 w-8 mr-2 pr-2 inset-y-0 grid place-items-center text-zinc-400'>
+            <p className='absolute text-sm left-0 w-8 inset-y-0 grid place-items-center text-zinc-400'>
               org/
             </p>
             <Input
@@ -94,7 +94,7 @@ const Page = () => {
           <Button
             isLoading={isLoading}
             disabled={input.length === 0}
-            onClick={() => createCommunity()}>
+            onClick={() => createOrganization()}>
             Create Organization
           </Button>
         </div>

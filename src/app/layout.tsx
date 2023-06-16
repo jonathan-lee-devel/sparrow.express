@@ -27,11 +27,12 @@ export default function RootLayout({
         'bg-white text-slate-900 antialiased light',
         inter.className
       )}>
-      <body className='min-h-screen pt-12 bg-slate-900 antialiased' suppressHydrationWarning={true}>
+      <body className='min-h-screen pt-12 bg-slate-50 antialiased'>
         <Providers>
           {/* @ts-expect-error Server Component */}
           <Navbar />
           {authModal}
+
           <div className='container max-w-7xl mx-auto h-full pt-12'>
             {children}
           </div>

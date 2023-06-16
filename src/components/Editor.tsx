@@ -59,7 +59,7 @@ export const Editor: React.FC<EditorProps> = ({ organizationId }) => {
       })
     },
     onSuccess: () => {
-      // turn pathname /org/mycommunity/submit into /org/mycommunity
+      // turn pathname /org/myorganization/submit into /org/myorganization
       const newPathname = pathname.split('/').slice(0, -1).join('/')
       router.push(newPathname)
 

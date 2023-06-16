@@ -1,6 +1,6 @@
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { SubredditSubscriptionValidator } from '@/lib/validators/organization'
+import { OrganizationSubscriptionValidator } from '@/lib/validators/organization'
 import { z } from 'zod'
 
 export async function POST(req: Request) {
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json()
-    const { organizationId } = SubredditSubscriptionValidator.parse(body)
+    const { organizationId } = OrganizationSubscriptionValidator.parse(body)
 
     // check if user has already subscribed or not
     const subscriptionExists = await db.subscription.findFirst({

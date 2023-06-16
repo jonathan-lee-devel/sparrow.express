@@ -1,6 +1,6 @@
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { SubredditValidator } from '@/lib/validators/organization'
+import { OrganizationValidator } from '@/lib/validators/organization'
 import { z } from 'zod'
 
 export async function POST(req: Request) {
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json()
-    const { name } = SubredditValidator.parse(body)
+    const { name } = OrganizationValidator.parse(body)
 
     // check if organization already exists
     const organizationExists = await db.organization.findFirst({
