@@ -19,7 +19,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@editorjs/code": "^2.8.0",
