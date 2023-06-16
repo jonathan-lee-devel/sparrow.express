@@ -74,12 +74,12 @@ const Page = () => {
           </p>
           <div className='relative'>
             <p className='absolute text-sm left-0 w-8 inset-y-0 grid place-items-center text-zinc-400'>
-              org/
+              org/{' '}
             </p>
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className='pl-6'
+              className='pl-7'
             />
           </div>
         </div>
