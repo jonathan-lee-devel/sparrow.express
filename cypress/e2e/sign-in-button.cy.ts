@@ -3,6 +3,7 @@
 describe('Sign-In Button', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000')
+        cy.wait(10_000)
     })
 
     it('Sign in with Google button redirects to Sign-In page', () => {
