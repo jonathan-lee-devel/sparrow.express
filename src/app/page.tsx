@@ -19,7 +19,7 @@ export default async function Home() {
                             Search for your favorite delivery service:
                         </p>
                     </div>
-                    <div className={"items-center"}>
+                    <div className={"items-center container pt-8 relative transform z-10"}>
                         <SearchBar></SearchBar>
                     </div>
                 </div>
