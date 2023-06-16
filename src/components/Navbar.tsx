@@ -2,9 +2,12 @@ import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { buttonVariants } from './ui/Button'
-import { UserAccountNav } from './UserAccountNav'
+import {ANONYMOUS_USER, UserAccountNav} from './UserAccountNav'
 import SearchBar from './SearchBar'
 import Image from "next/image";
+import {Icons} from "@/components/Icons";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem} from "@/components/ui/DropdownMenu";
+import {User} from "lucide-react";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions)
@@ -13,7 +16,7 @@ const Navbar = async () => {
       <div className='container max-w-7xl h-full mx-auto flex items-center justify-between gap-2'>
         {/* logo */}
         <Link href='/' className='flex gap-2 items-center'>
-          <Image src={'/favicon.ico'} width={30} height={30} alt={'Sparrow Logo'} className='h-8 w-8 sm:h-6 sm:w-6' />
+          <Image src={'/favicon.ico'} width={40} height={30} alt={'Sparrow Logo'} className='h-8 w-8 sm:h-6 sm:w-6' />
           <p className='hidden text-zinc-700 text-sm font-medium md:block'>Sparrow</p>
         </Link>
 
@@ -24,9 +27,7 @@ const Navbar = async () => {
         {session?.user ? (
           <UserAccountNav user={session.user} />
         ) : (
-          <Link href='/sign-in' className={buttonVariants()}>
-            Sign In
-          </Link>
+            <UserAccountNav user={ANONYMOUS_USER} />
         )}
       </div>
     </div>
