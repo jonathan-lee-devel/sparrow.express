@@ -45,7 +45,6 @@ const OrganizationPostPage = async ({ params }: OrganizationPostPageProps) => {
     <div>
       <div className='h-full flex flex-col sm:flex-row items-center sm:items-start justify-between'>
         <Suspense fallback={<PostVoteShell />}>
-          {/* @ts-expect-error server component */}
           <PostVoteServer
             postId={post?.id ?? cachedPost.id}
             getData={async () => {

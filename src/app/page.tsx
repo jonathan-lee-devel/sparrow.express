@@ -11,7 +11,6 @@ export default async function Home() {
   return (
     <>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6'>
-        {/* @ts-expect-error server component */}
         {session ? <CustomFeed /> : <GeneralFeed />}
       </div>
     </>
