@@ -20,6 +20,9 @@ export async function POST(req: Request) {
             include: {UserVerification: true},
         })
 
+        // eslint-disable-next-line no-console
+        console.log(JSON.stringify(user))
+
         if (!user) {
             return new Response('Internal Server Error', {status: 500})
         }
