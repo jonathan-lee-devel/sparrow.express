@@ -54,7 +54,7 @@ export const Editor: React.FC<EditorProps> = ({ organizationId }) => {
     onError: () => {
       return toast({
         title: 'Something went wrong.',
-        description: 'Your post was not published. Please try again.',
+        description: 'Your post was not published. You must be a verified user to post.',
         variant: 'destructive',
       })
     },

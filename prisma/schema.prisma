@@ -54,12 +54,19 @@ model User {
 
   username String? @unique
 
-  image       String?
-  accounts    Account[]
-  sessions    Session[]
-  Post        Post[]
-  Comment     Comment[]
-  CommentVote CommentVote[]
+  image            String?
+  accounts         Account[]
+  sessions         Session[]
+  Post             Post[]
+  Comment          Comment[]
+  CommentVote      CommentVote[]
+  UserVerification UserVerification?
+}
+
+model UserVerification {
+  id        String @id @default(cuid())
+  userEmail String @unique
+  user      User   @relation(fields: [userEmail], references: [id])
 }
 
 model Organization {
