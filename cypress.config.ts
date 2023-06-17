@@ -7,4 +7,5 @@ export default defineConfig({
     },
   },
   projectId: '9ep3gw',
+  defaultCommandTimeout: 10_000,
 });
