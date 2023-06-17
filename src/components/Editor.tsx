@@ -51,10 +51,17 @@ export const Editor: React.FC<EditorProps> = ({ organizationId }) => {
       const { data } = await axios.post('/api/organization/post/create', payload)
       return data
     },
-    onError: () => {
+    onError: (err: any) => {
+      if (err.response?.status === 403) {
+        return toast({
+          title: 'Access Denied',
+          description: 'You must be a verified user to post.',
+          variant: 'destructive',
+        })
+      }
       return toast({
         title: 'Something went wrong.',
-        description: 'Your post was not published. You must be a verified user to post.',
+        description: 'Your post could not be published.',
         variant: 'destructive',
       })
     },
